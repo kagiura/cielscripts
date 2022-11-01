@@ -4,7 +4,7 @@ function cs__hashMasterlist() {
     const $thisHeader = $thisCard.find("h2");
     const thisTitle = $thisHeader
       .text()
-      .replace(/[^A-z]/g, "")
+      .replace(/[^A-z0-9]/g, "")
       .toLocaleLowerCase();
     $thisCard.attr("data-story-name", thisTitle);
   });
