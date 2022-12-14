@@ -12,15 +12,17 @@ function cs__popups() {
       `[popup-id=${popupID.replace("[", '"').replace("]", '"')}]`
     );
 
-    $thisPopup.prepend(
-      `<div class="cs__popup-titlebar"><span class="cs__popup-title">${
-        $thisPopup.attr("popup-title") || "Popup"
-      }</span><span class="cs__popup-close">X</span></div>`
-    );
-    $thisPopup.find(".cs__popup-close").click(function () {
-      $popupGrayout.fadeOut("fast");
-      $thisPopup.fadeOut("fast");
-    });
+    if ($thisPopup.find(".cs__popup-titlebar").length === 0) {
+      $thisPopup.prepend(
+        `<div class="cs__popup-titlebar"><span class="cs__popup-title">${
+          $thisPopup.attr("popup-title") || "Popup"
+        }</span><span class="cs__popup-close">X</span></div>`
+      );
+      $thisPopup.find(".cs__popup-close").click(function () {
+        $popupGrayout.fadeOut("fast");
+        $thisPopup.fadeOut("fast");
+      });
+    }
 
     $thisPopupButton.click(function () {
       $popupGrayout.fadeIn("fast");
